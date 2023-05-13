@@ -14,9 +14,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "tailwindcss": "^3.3.2"
-  },
-  "devDependencies": {
+    "tailwindcss": "^3.3.2",
     "@babel/cli": "^7.21.5",
     "@babel/core": "^7.21.8",
     "@babel/preset-env": "^7.21.5"
