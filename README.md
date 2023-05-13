@@ -14,4 +14,8 @@ One the extension is loaded, this is the UI you will get.
 
 Just click `GRADE` and you will be good to go!
 
+Once the grading process is completed, you will see the notification on the top right side of your browser.
+
+![grade_success.png](./docs/grade_success.png)
+
 Enjoy!
