@@ -17,6 +17,7 @@ jobs:
         with:
           node-version: 18
           cache: "yarn"
+      - run: yarn
       - run: yarn build
 
       - uses: actions/checkout@master
