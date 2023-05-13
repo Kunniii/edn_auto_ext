@@ -19,15 +19,15 @@ jobs:
         run: npm run build
 
       - name: Create Zip file
-        uses: montudor/action-zip@v1.2.1
+        uses: montudor/action-zip@v1
         with:
-          args: zip -r my-project.zip dist
+          args: zip -r EDN_Auto_v2.zip build
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
-          name: my-project-zip
-          path: my-project.zip
+          name: EDN_Auto_v2-zip
+          path: EDN_Auto_v2.zip
 
   release:
     needs: build
@@ -36,8 +36,8 @@ jobs:
       - name: Download Artifact
         uses: actions/download-artifact@v2
         with:
-          name: my-project-zip
-          path: my-project.zip
+          name: EDN_Auto_v2-zip
+          path: EDN_Auto_v2.zip
 
       - name: Create Release
         id: create_release
@@ -59,6 +59,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: my-project.zip
-          asset_name: my-project.zip
+          asset_path: EDN_Auto_v2.zip
+          asset_name: EDN_Auto_v2.zip
           asset_content_type: application/zip
