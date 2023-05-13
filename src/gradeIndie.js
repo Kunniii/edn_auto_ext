@@ -110,39 +110,36 @@ function grade_indie(stars = 5) {
               }
             }
           }
-          post(`${API}/grade/get-grade`, {
-            ...options,
-            body: JSON.stringify({ groupId: groupId, privateCqId: privateCqId }),
-          })
-            .then((d) => d.json())
-            .then((d) => {
-              let grade = {
-                hardWorking: stars,
-                goodKnowledge: stars,
-                teamWorking: stars,
-              };
-              let gradeResponseList = d.data.gradeResponseList;
-              for (let user of gradeResponseList) {
-                if (user.id == myId) continue;
-                gradeTeammatesList.push({ ...user, ...grade, userIsGradedId: user.userIsGraded });
-              }
-              if (gradeTeammatesList.length < 1) {
-                showIndicate("FAIL! Teammates grade", "#9F200A", 4);
-                return;
-              }
-              post(`${API}/grade/grade-teammates`, {
-                ...options,
-                body: JSON.stringify({
-                  gradeTeammatesList: gradeTeammatesList,
-                }),
-              }).then((d) => {
-                if (d.status == 200) {
-                  showIndicate("Teammates graded", "#f4c430", 4);
-                } else {
-                  showIndicate("FAIL! Teammates graded", "#9F200A", 4);
-                }
-              });
+          for (let user of myGroup.listStudentByGroups) {
+            let userIsGraded = user.id;
+            let userIsGradedId = user.id;
+            gradeTeammatesList.push({
+              groupId: groupId,
+              classroomSessionId: classroomSessionId,
+              privateCqId: privateCqId,
+              userIsGraded: userIsGraded,
+              userIsGradedId: userIsGradedId,
+              hardWorking: stars,
+              goodKnowledge: stars,
+              teamWorking: stars,
             });
+          }
+          if (gradeTeammatesList.length < 1) {
+            showIndicate("FAIL! Teammates grade", "#E32E10", 4);
+            return;
+          }
+          post(`${API}/grade/grade-teammates`, {
+            ...options,
+            body: JSON.stringify({
+              gradeTeammatesList: gradeTeammatesList,
+            }),
+          }).then((d) => {
+            if (d.status == 200) {
+              showIndicate("Teammates graded", "#f4c430", 4);
+            } else {
+              showIndicate("FAIL! Teammates graded", "#E32E10", 4);
+            }
+          });
         });
     });
 }
