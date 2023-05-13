@@ -35,8 +35,8 @@ const extensionView = {
 };
 
 async function launchExtension(tab) {
-  if (tab.url.startsWith("chrome://") || tab.url.startsWith("edge://")) return;
-  if (!tab.url.includes("fu-edunext.fpt.edu.vn")) {
+  if (tab.url.startsWith("chrome") || tab.url.startsWith("edge")) return;
+  if (!tab.url.includes("fu-edunext.fpt.edu.vn/course/activity/question")) {
     await chrome.scripting.executeScript({
       target: { tabId: tab.id },
       files: ["alert.js"],

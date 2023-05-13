@@ -1,7 +1,7 @@
 {
   "name": "EDN Auto V2",
   "description": "EDN Auto V2",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "manifest_version": 3,
   "icons": {
     "16": "icon.png",

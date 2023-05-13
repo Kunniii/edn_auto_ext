@@ -2,3 +2,5 @@ dist
 node_modules
 *.log
 build
+EDN_Auto_V*
+*.zip

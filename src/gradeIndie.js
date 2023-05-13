@@ -96,6 +96,10 @@ function grade_indie(stars = 5) {
       post(`${API}/group/list-group`, { ...options }, { classroomSessionId: classroomSessionId })
         .then((d) => d.json())
         .then((groups) => {
+          if (groups.length < 1) {
+            showIndicate("FAIL! No teammate to grade", "#E32E10", 4);
+            return;
+          }
           let groupId = 0;
           let myGroup = {};
           let myId = 0;
@@ -125,7 +129,7 @@ function grade_indie(stars = 5) {
             });
           }
           if (gradeTeammatesList.length < 1) {
-            showIndicate("FAIL! Teammates grade", "#E32E10", 4);
+            showIndicate("FAIL! No teammate to grade", "#E32E10", 4);
             return;
           }
           post(`${API}/grade/grade-teammates`, {

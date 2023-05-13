@@ -84,7 +84,7 @@ function grade_group(stars = 5) {
     .then((d) => {
       let groupGrades = d.data;
       try {
-        let gradeAbleGroups = groupGrades.filter((d) => d.presentGroupGrade);
+        let gradeAbleGroups = groupGrades;
         if (gradeAbleGroups.length < 1) {
           showIndicate(`FAIL! No group to grade!`, "#E32E10", 4);
           return;
