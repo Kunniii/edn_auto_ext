@@ -4,10 +4,10 @@
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev-tailwind": "tailwindcss -i ./src/index.css -o ./build/index.css --watch",
-    "dev-js": "babel src -d build -w -D --ignore '**/*.css'",
-    "build-tailwind": "tailwindcss -i ./src/index.css -o ./build/index.css --minify",
-    "build-js": "babel src -d build -D --minified --ignore '**/*.css'",
+    "dev-tailwind": "yarn tailwindcss -i ./src/index.css -o ./build/index.css --watch",
+    "dev-js": "yarn babel src -d build -w -D --ignore '**/*.css'",
+    "build-tailwind": "yarn tailwindcss -i ./src/index.css -o ./build/index.css --minify",
+    "build-js": "yarn babel src -d build -D --minified --ignore '**/*.css'",
     "build": "yarn build-js && yarn build-tailwind"
   },
   "keywords": [],
