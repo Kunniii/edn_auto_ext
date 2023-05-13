@@ -1,2 +1,0 @@
-"use strict";// alert("Please go to EduNext's question section to use this extension!");
-alert("Xin h\xE3y \u0111\u1EBFn ph\u1EA7n c\xE2u h\u1ECFi c\u1EE7a Edunext \u0111\u1EC3 d\xF9ng extension n\xE0y!");
