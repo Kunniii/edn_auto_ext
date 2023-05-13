@@ -1,3 +1,7 @@
+let token = localStorage.getItem("token");
+let myEmail = JSON.parse(atob(token.split(".")[1])).email;
+const API = "https://fugw-edunext.fpt.edu.vn:8443/api/v1";
+
 function get(url, options, params) {
   if (params) {
     return fetch(url + "?" + new URLSearchParams(params), { ...options, method: "GET" });

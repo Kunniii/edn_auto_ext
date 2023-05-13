@@ -16,10 +16,6 @@ document.head.appendChild(notificationStyle);
 let yOffset = 0;
 let offsetAmount = 75;
 
-let token = localStorage.getItem("token");
-let myEmail = JSON.parse(atob(token.split(".")[1])).email;
-const API = "https://fugw-edunext.fpt.edu.vn:8443/api/v1";
-
 function showIndicate(text, color, seconds) {
   const notification = document.createElement("div");
   notification.style.backgroundColor = color;
