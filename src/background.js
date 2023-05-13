@@ -36,7 +36,7 @@ const extensionView = {
 
 async function launchExtension(tab) {
   if (tab.url.startsWith("chrome://") || tab.url.startsWith("edge://")) return;
-  if (!tab.url.includes("fu-edunext.fpt.edu.vn/course/activity/question")) {
+  if (!tab.url.includes("fu-edunext.fpt.edu.vn")) {
     await chrome.scripting.executeScript({
       target: { tabId: tab.id },
       files: ["alert.js"],
@@ -64,6 +64,10 @@ async function launchExtension(tab) {
 chrome.action.onClicked.addListener(launchExtension);
 
 chrome.runtime.onMessage.addListener((request) => {
+  if (!ednTabId) {
+    alert("Please reload web page and reload extension!");
+    return;
+  }
   if (request.command) {
     let command = request.command;
     if (command == "grade_indie") {
