@@ -1,3 +1,28 @@
+function get(url, options, params) {
+  if (params) {
+    return fetch(url + "?" + new URLSearchParams(params), { ...options, method: "GET" });
+  } else {
+    return fetch(url, { ...options, method: "GET" });
+  }
+}
+
+function post(url, options, params) {
+  if (params) {
+    return fetch(url + "?" + new URLSearchParams(params), { ...options, method: "POST" });
+  } else {
+    return fetch(url, { ...options, method: "POST" });
+  }
+}
+
+const options = {
+  headers: {
+    authority: "fugw-edunext.fpt.edu.vn:8443",
+    accept: "application/json, text/plain, */*",
+    "content-type": "application/json",
+    authorization: `Bearer ${token}`,
+  },
+};
+
 function grade_indie(stars = 5) {
   let url = new URL(document.URL);
   let pathname = url.pathname;
@@ -57,7 +82,7 @@ function grade_indie(stars = 5) {
                 }),
               }).then((d) => {
                 if (d.status == 200) {
-                  showIndicate("Individual graded", "#5f5", 2);
+                  showIndicate("Individual graded", "#38761d", 4);
                 }
               });
             });

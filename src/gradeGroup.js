@@ -1,3 +1,28 @@
+function get(url, options, params) {
+  if (params) {
+    return fetch(url + "?" + new URLSearchParams(params), { ...options, method: "GET" });
+  } else {
+    return fetch(url, { ...options, method: "GET" });
+  }
+}
+
+function post(url, options, params) {
+  if (params) {
+    return fetch(url + "?" + new URLSearchParams(params), { ...options, method: "POST" });
+  } else {
+    return fetch(url, { ...options, method: "POST" });
+  }
+}
+
+const options = {
+  headers: {
+    authority: "fugw-edunext.fpt.edu.vn:8443",
+    accept: "application/json, text/plain, */*",
+    "content-type": "application/json",
+    authorization: `Bearer ${token}`,
+  },
+};
+
 function grade_group(stars = 5) {
   let url = new URL(document.URL);
   let pathname = url.pathname;
@@ -28,7 +53,7 @@ function grade_group(stars = 5) {
           body: JSON.stringify(body),
         }).then((d) => {
           if (d.status == 200) {
-            showIndicate(`Group ${group.presentGroupId} graded`, "#7e8efb", 2);
+            showIndicate(`Group ${group.presentGroupId} graded`, "#7e8efb", 4);
           }
         });
       }
