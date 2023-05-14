@@ -1,9 +1,9 @@
-name: Release Workflow
+name: PreRelease Workflow
 
 on:
   push:
     tags:
-      - v*
+      - pre-v*
 
 jobs:
   build:
@@ -46,7 +46,13 @@ jobs:
       #   with:
       #     name: EDN_Auto_V2.zip
       #     path: checksum.md5
-      - uses: ncipollo/release-action@v1
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
         with:
-          artifacts: "EDN_Auto_V2.zip,checksum.md5"
-          bodyFile: "RELEASE.md"
+          name: "Pre-release ${{ github.ref_name }}"
+          body_path: "RELEASE.md"
+          files: |
+            EDN_Auto_V2.zip
+            checksum.md5
+          prerelease: true
