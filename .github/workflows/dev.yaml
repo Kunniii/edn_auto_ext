@@ -41,10 +41,10 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: EDN_Auto_V2.zip
-          path: EDN_Auto_V2.zip
+          path: ./build/*
 
       - name: Upload checksum file
         uses: actions/upload-artifact@v3
         with:
-          name: checksum.md5
+          name: EDN_Auto_V2.zip
           path: checksum.md5
