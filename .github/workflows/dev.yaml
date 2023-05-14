@@ -31,8 +31,8 @@ jobs:
       # - name: Rename build folder
       #   run: mv build EDN_Auto_V2
 
-      # - name: Compress build
-      #   run: zip -r EDN_Auto_V2.zip EDN_Auto_V2
+      - name: Compress build
+        run: zip -r EDN_Auto_V2.zip build
 
       - name: Generate MD5 Checksum
         run: md5sum EDN_Auto_V2.zip > checksum.md5
