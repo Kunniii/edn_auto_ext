@@ -1,0 +1,14 @@
+name: Dev Workflow
+
+on:
+  push:
+    branches:
+      - v2
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - run: echo Hello

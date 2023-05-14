@@ -15,11 +15,13 @@ jobs:
         uses: actions/checkout@v3
         with:
           ref: dev
+
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: "18"
           cache: "yarn"
+
       - name: Installing dependencies
         run: yarn install --frozen-lockfile
 
@@ -29,18 +31,20 @@ jobs:
       - name: Rename build folder
         run: mv build EDN_Auto_V2
 
-      - name: Compress build folder
+      - name: Compress build
         run: zip -r EDN_Auto_V2.zip EDN_Auto_V2
 
       - name: Generate MD5 Checksum
-        run: md5sum EDN_Auto_V2.zip > checksum.txt
+        run: md5sum EDN_Auto_V2.zip > checksum.md5
 
       - name: Upload zip file
         uses: actions/upload-artifact@v3
         with:
+          name: EDN_Auto_V2.zip
           path: EDN_Auto_V2.zip
 
       - name: Upload checksum file
         uses: actions/upload-artifact@v3
         with:
-          path: checksum.txt
+          name: checksum.md5
+          path: checksum.md5
