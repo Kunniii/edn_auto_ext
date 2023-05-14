@@ -10,7 +10,7 @@ function grade_group(stars = 5) {
       try {
         let gradeAbleGroups = groupGrades;
         if (gradeAbleGroups.length < 1) {
-          showIndicate(`FAIL! No group to grade!`, "#E32E10", 4);
+          showIndicate(`FAIL! No group to grade!`, "#E32E10", 2);
           return;
         }
         for (let group of gradeAbleGroups) {
@@ -33,14 +33,14 @@ function grade_group(stars = 5) {
             body: JSON.stringify(body),
           }).then((d) => {
             if (d.status == 200) {
-              showIndicate(`Group ${group.presentGroupId} graded`, "#7e8efb", 4);
+              showIndicate(`Group ${group.presentGroupId} graded`, "#453BBA", 2);
             } else {
-              showIndicate(`FAIL! Grade group ${group.presentGroupId}`, "#E32E10", 4);
+              showIndicate(`FAIL! Grade group ${group.presentGroupId}`, "#E32E10", 2);
             }
           });
         }
       } catch {
-        showIndicate(`FAIL! No group to grade!`, "#E32E10", 4);
+        showIndicate(`FAIL! No group to grade!`, "#E32E10", 2);
       }
     });
 }

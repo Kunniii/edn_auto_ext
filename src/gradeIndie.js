@@ -21,7 +21,7 @@ function grade_indie(stars = 5) {
         .then((d) => d.json())
         .then((groups) => {
           if (groups.length < 1) {
-            showIndicate("FAIL! No teammate to grade", "#E32E10", 4);
+            showIndicate("FAIL! No teammate to grade", "#E32E10", 2);
             return;
           }
           let groupId = 0;
@@ -53,7 +53,7 @@ function grade_indie(stars = 5) {
             });
           }
           if (gradeTeammatesList.length < 1) {
-            showIndicate("FAIL! No teammate to grade", "#E32E10", 4);
+            showIndicate("FAIL! No teammate to grade", "#E32E10", 2);
             return;
           }
           post(`${API}/grade/grade-teammates`, {
@@ -63,9 +63,9 @@ function grade_indie(stars = 5) {
             }),
           }).then((d) => {
             if (d.status == 200) {
-              showIndicate("Teammates graded", "#f4c430", 4);
+              showIndicate("Teammates graded", "#f4c430", 2);
             } else {
-              showIndicate("FAIL! Teammates graded", "#E32E10", 4);
+              showIndicate("FAIL! Teammates graded", "#E32E10", 2);
             }
           });
         });

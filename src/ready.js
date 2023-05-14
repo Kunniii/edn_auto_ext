@@ -19,7 +19,7 @@ let offsetAmount = 75;
 function showIndicate(text, color, seconds) {
   const notification = document.createElement("div");
   notification.style.backgroundColor = color;
-  notification.style.animation = "fadein 0.5s, fadeout 2s 2s";
+  notification.style.animation = "fadein 0.5s, fadeout 1s 1s";
   notification.style.position = "fixed";
   notification.style.width = "20rem";
   notification.style.top = `${10 + yOffset}px`;
@@ -74,4 +74,4 @@ const options = {
   },
 };
 
-showIndicate(`Welcome ${myEmail.split("@")[0]}`, "#35a661", 3);
+showIndicate(`Welcome ${myEmail.split("@")[0]}`, "#35a661", 2);
