@@ -41,7 +41,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: EDN_Auto_V2.zip
-          path: ./build/*
+          path: ./build/
 
       - name: Upload checksum file
         uses: actions/upload-artifact@v3
