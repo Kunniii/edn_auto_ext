@@ -1,0 +1,1 @@
+"use strict";var clog=console.log;var indie_button=document.getElementById("indie-button");var group_button=document.getElementById("group-button");indie_button.addEventListener("click",function(){return chrome.runtime.sendMessage({command:"grade_indie"})});group_button.addEventListener("click",function(){return chrome.runtime.sendMessage({command:"grade_group"})});
