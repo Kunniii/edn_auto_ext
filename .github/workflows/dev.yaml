@@ -31,6 +31,9 @@ jobs:
       - name: Compress file
         run: cd build && zip ../EDN_Auto_V2.zip * && cd ..
 
+  upload:
+    runs-on: ubuntu-latest
+    steps:
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:
