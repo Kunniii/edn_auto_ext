@@ -8,5 +8,6 @@ This release increase UX.
 
 ## Todo
 
-- [x] Notify if the extension loaded correctly
-- [ ] Notify if there is any error when load extension
+- [x] Notify if the extension loaded correctly.
+- [ ] Notify if there is any error when load extension.
+- [ ] Remember windows location after extension close.
