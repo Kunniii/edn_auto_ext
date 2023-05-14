@@ -47,7 +47,7 @@ function showIndicate(text, color, seconds) {
 
 let token = localStorage.getItem("token");
 let myEmail = JSON.parse(atob(token.split(".")[1])).email;
-const API = "https://fugw-edunext.fpt.edu.vn:8443/api/v1";
+const API = "https://fugw-edunext.fpt.edu.vn/api/v1";
 
 function get(url, options, params) {
   if (params) {
@@ -67,7 +67,7 @@ function post(url, options, params) {
 
 const options = {
   headers: {
-    authority: "fugw-edunext.fpt.edu.vn:8443",
+    authority: "fugw-edunext.fpt.edu.vn",
     accept: "application/json, text/plain, */*",
     "content-type": "application/json",
     authorization: `Bearer ${token}`,
