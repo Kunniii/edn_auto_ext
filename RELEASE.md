@@ -1,8 +1,12 @@
-# [Name Of The Release]
+# New release 🎉 🎉
 
-Some descriptions.
+This release increase UX.
 
 ## Changes
 
-- Change 1
-- Change 2
+- When user open extension, a notification will show if the extension is ready to use
+
+## Todo
+
+- [x] Notify if the extension loaded correctly
+- [ ] Notify if there is any error when load extension

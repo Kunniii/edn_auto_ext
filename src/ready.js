@@ -45,4 +45,33 @@ function showIndicate(text, color, seconds) {
   }, 1000 * seconds);
 }
 
-showIndicate("You are ready to go!", "#35a661", 3);
+let token = localStorage.getItem("token");
+let myEmail = JSON.parse(atob(token.split(".")[1])).email;
+const API = "https://fugw-edunext.fpt.edu.vn:8443/api/v1";
+
+function get(url, options, params) {
+  if (params) {
+    return fetch(url + "?" + new URLSearchParams(params), { ...options, method: "GET" });
+  } else {
+    return fetch(url, { ...options, method: "GET" });
+  }
+}
+
+function post(url, options, params) {
+  if (params) {
+    return fetch(url + "?" + new URLSearchParams(params), { ...options, method: "POST" });
+  } else {
+    return fetch(url, { ...options, method: "POST" });
+  }
+}
+
+const options = {
+  headers: {
+    authority: "fugw-edunext.fpt.edu.vn",
+    accept: "application/json, text/plain, */*",
+    "content-type": "application/json",
+    authorization: `Bearer ${token}`,
+  },
+};
+
+showIndicate(`Welcome ${myEmail.split("@")[0]}`, "#35a661", 3);
