@@ -28,23 +28,10 @@ jobs:
       - name: Build for production
         run: yarn build
 
-      - name: Rename build folder
-        run: mv build EDN_Auto_V2
+      - name: Compress file
+        run: cd build && zip ../EDN_Auto_V2.zip * && cd ..
 
-      - name: Compress build
-        run: zip -r EDN_Auto_V2.zip EDN_Auto_V2
-
-      - name: Generate MD5 Checksum
-        run: md5sum EDN_Auto_V2.zip > checksum.md5
-
-      - name: Upload zip file
+      - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: EDN_Auto_V2.zip
           path: EDN_Auto_V2.zip
-
-      - name: Upload checksum file
-        uses: actions/upload-artifact@v3
-        with:
-          name: EDN_Auto_V2.zip
-          path: checksum.md5
