@@ -51,7 +51,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           name: "Pre-release ${{ github.ref_name }}"
-          body_path: "RELEASE.md"
+          body_path: "PRE-RELEASE.md"
           files: |
             EDN_Auto_V2.zip
             checksum.md5

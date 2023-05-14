@@ -44,12 +44,11 @@ async function launchExtension(tab) {
     return;
   } else {
     ednTabId = tab.id;
-    await chrome.scripting.executeScript({
+    chrome.scripting.executeScript({
       target: { tabId: tab.id },
       files: ["ready.js"],
     });
   }
-  clog(ednTabId);
   await extensionView.find().then((found) => {
     if (found) {
       extensionView.focus();

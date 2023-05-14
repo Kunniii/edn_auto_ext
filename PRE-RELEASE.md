@@ -1,17 +1,15 @@
-# New release 🎉 🎉
+# Pre Release - Use at your own risk 🎉 🎉
 
-Due to critical change in API endpoints. This is the new release that comes with a few tested features from `pre-v2.2.1-1`.
+This release increase UX.
 
 ## Changes
 
 - When user open extension, a notification will show if the extension is ready to use
-- API endpoints will now need PORT
 
 ## Todo
 
 - [x] Notify if the extension loaded correctly.
 - [ ] Notify if there is any error when load extension.
-- [ ] Script to check for newest version in the extension.
 - [ ] Remember windows location after extension close.
 - [ ] Try to check if the API need PORT ?
 - [ ] Show alert telling user to send email if there is some critical error.
