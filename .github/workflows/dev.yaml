@@ -28,9 +28,6 @@ jobs:
       - name: Build for production
         run: yarn build
 
-      - name: Rename build folder
-        run: mv build EDN_Auto_V2
-
       - name: Compress build
         run: zip -r EDN_Auto_V2.zip EDN_Auto_V2
 
