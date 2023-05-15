@@ -33,3 +33,11 @@ jobs:
           disable_nojekyll: true
           publish_branch: production
           publish_dir: ./build
+
+      - name: Build release branch
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          disable_nojekyll: true
+          publish_branch: stable
+          publish_dir: ./build
