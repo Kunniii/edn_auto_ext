@@ -15,7 +15,13 @@ function grade_indie(stars = 5) {
   )
     .then((d) => d.json())
     .then((d) => {
-      let data = d.data[0];
+      let data;
+      try {
+        data = d.data[0];
+      } catch {
+        showIndicate("ERROR! Please reload EduNext!!!", "#E32E10", 2);
+        return;
+      }
       let classroomSessionId = data.classroomSessionId;
       post(`${API}/group/list-group`, { ...options }, { classroomSessionId: classroomSessionId })
         .then((d) => d.json())

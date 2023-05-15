@@ -57,7 +57,7 @@ async function launchExtension(tab) {
         url: chrome.runtime.getURL("index.html"),
         type: "popup",
         focused: true,
-        height: 300,
+        height: 350,
         width: 400,
       });
     }

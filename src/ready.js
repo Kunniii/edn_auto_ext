@@ -75,4 +75,4 @@ const options = {
   },
 };
 
-showIndicate(`Welcome ${myEmail.split("@")[0]}`, "#35a661", 2);
+showIndicate(`Welcome ${myEmail.split("@")[0]}`, "#35a661", 1.5);
