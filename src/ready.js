@@ -46,7 +46,12 @@ function showIndicate(text, color, seconds) {
 }
 
 let token = localStorage.getItem("token");
-let myEmail = JSON.parse(atob(token.split(".")[1])).email;
+let myEmail;
+try {
+  myEmail = JSON.parse(atob(token.split(".")[1])).email;
+} catch {
+  myEmail = "Bạn";
+}
 const API = "https://fugw-edunext.fpt.edu.vn:8443/api/v1";
 // const API = "https://fugw-edunext.fpt.edu.vn/api/v1";
 
