@@ -20,7 +20,7 @@
       "128": "icon.png"
     }
   },
-  "permissions": ["storage", "activeTab", "scripting", "tabs"],
+  "permissions": ["storage", "scripting", "tabs"],
   "host_permissions": ["https://*.fpt.edu.vn/course/activity/*"],
   "web_accessible_resources": [
     {
