@@ -1,8 +1,10 @@
-# EDN Auto V2
-
 <a href="https://www.buymeacoffee.com/Kunniii" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
 
 <a href='https://ko-fi.com/A0A0LD4D8' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/brandasset/kofi_button_red.png' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
+
+---
+
+# EDN Auto V2
 
 This is an Browser Extension for Automate boring grading stars for users on EDN platform.
 
