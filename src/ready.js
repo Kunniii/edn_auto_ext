@@ -45,13 +45,17 @@ function showIndicate(text, color, seconds) {
   }, 1000 * seconds);
 }
 
-let token = localStorage.getItem("token");
-let myEmail;
-try {
-  myEmail = JSON.parse(atob(token.split(".")[1])).email;
-} catch {
-  myEmail = "Bạn";
+function addPaddingToBase64(base64String) {
+  while (base64String.length % 4 !== 0) {
+    base64String += "=";
+  }
+  return base64String;
 }
+
+let token = localStorage.getItem("token");
+let b64 = addPaddingToBase64(token.split(".")[1]);
+let myEmail = JSON.parse(atob(b64)).email;
+
 const API = "https://fugw-edunext.fpt.edu.vn:8443/api/v1";
 // const API = "https://fugw-edunext.fpt.edu.vn/api/v1";
 
@@ -80,4 +84,4 @@ const options = {
   },
 };
 
-showIndicate(`Welcome ${myEmail.split("@")[0]}`, "#35a661", 1.5);
+showIndicate(`Welcome ${myEmail.split("@")[0]}`, "#35a661", 1);
