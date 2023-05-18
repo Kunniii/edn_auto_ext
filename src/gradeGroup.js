@@ -12,7 +12,7 @@ function grade_comments(stars = 5) {
       try {
         clog(rounds);
         if (rounds.length < 1) {
-          showIndicate(`FAIL! No group to grade!`, "#E32E10", 1);
+          showIndicate(`FAIL! No group to grade!`, "#E32E10", 2);
           return;
         }
 
@@ -33,7 +33,7 @@ function grade_comments(stars = 5) {
 
             let gradeAbleGroups = rounds.filter((round) => round.presentGroupId != myGroup.id);
             if (gradeAbleGroups.length < 1) {
-              showIndicate(`FAIL! No group to grade!`, "#E32E10", 1);
+              showIndicate(`FAIL! No group to grade!`, "#E32E10", 2);
               return;
             }
 
@@ -58,15 +58,15 @@ function grade_comments(stars = 5) {
                 body: JSON.stringify(body),
               }).then((d) => {
                 if (d.status == 200) {
-                  showIndicate(`Group ${group.presentGroupId} graded`, "#453BBA", 1);
+                  showIndicate(`Group ${group.presentGroupId} graded`, "#2563eb", 2);
                 } else {
-                  showIndicate(`FAIL! Grade group ${group.presentGroupId}`, "#E32E10", 1);
+                  showIndicate(`FAIL! Grade group ${group.presentGroupId}`, "#E32E10", 2);
                 }
               });
             }
           });
       } catch {
-        showIndicate(`FAIL! No group to grade!`, "#E32E10", 1);
+        showIndicate(`FAIL! No group to grade!`, "#E32E10", 2);
       }
     });
 }

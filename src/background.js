@@ -4,8 +4,8 @@ let ednTabId = 0;
 
 const last_window_info = {
   location_default: {
-    height: 350,
-    width: 400,
+    height: 400,
+    width: 385,
     top: 100,
     left: 100,
   },
@@ -96,8 +96,8 @@ chrome.windows.onBoundsChanged.addListener((window) => {
   if (extensionView.window) {
     if (extensionView.window.id === window.id) {
       let location = {
-        width: 400,
-        height: 350,
+        height: 400,
+        width: 385,
         top: window.top,
         left: window.left,
       };
@@ -132,6 +132,12 @@ chrome.runtime.onMessage.addListener((request) => {
       chrome.scripting.executeScript({
         target: { tabId: ednTabId },
         files: ["gradeGroup.js"],
+      });
+    }
+    if (command == "grade_comments") {
+      chrome.scripting.executeScript({
+        target: { tabId: ednTabId },
+        files: ["gradeComments.js"],
       });
     }
   }

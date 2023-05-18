@@ -1,14 +1,14 @@
 {
   "name": "edn_auto_ext",
-  "version": "1.0.0",
-  "description": "",
+  "description": "Edunext Automation Grading tools as Chrome Extension",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev-tailwind": "tailwindcss -i ./src/index.css -o ./build/index.css --watch",
     "dev-js": "babel src -d build -w -D --ignore '**/*.css'",
     "build-tailwind": "tailwindcss -i ./src/index.css -o ./build/index.css --minify",
     "build-js": "babel src -d build -D --minified --ignore '**/*.css'",
-    "build": "yarn build-js && yarn build-tailwind"
+    "build": "yarn build-js && yarn build-tailwind",
+    "update-version": "node update-version.js"
   },
   "keywords": [],
   "author": "",
@@ -18,5 +18,6 @@
     "@babel/cli": "^7.21.5",
     "@babel/core": "^7.21.8",
     "@babel/preset-env": "^7.21.5"
-  }
+  },
+  "version": "2.2.2"
 }

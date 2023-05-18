@@ -1,15 +1,15 @@
 # New release 🎉 🎉
 
-New update aims to fix error when executing `atob()` on some devices.
+New update aims to ACTUALLY fix error when executing `atob()`.
+
+New function to vote comments.
 
 ## Changes
 
-- For some devices that failed to execute `atob()`, user name will be "Bạn".
+- Resolve #4: Fails when convert base64 to string.
+- New feature: Up vote for comments
 
 ## Todo
 
-- [x] Notify if the extension loaded correctly.
-- [x] Script to check for newest version in the extension.
-- [x] Remember windows location after extension close.
-- [ ] Try to check if the API need PORT ?
+- [ ] Automation for publishing to Chrome Store.
 - [ ] Show alert telling user to send email if there is some critical error.
