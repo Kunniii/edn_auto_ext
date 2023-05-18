@@ -83,6 +83,7 @@ const options = {
 };
 
 let myId;
+let myEmail;
 
 post("https://fugw-edunext.fpt.edu.vn/api/auth/token", { ...options })
   .then((d) => d.json())
@@ -90,4 +91,5 @@ post("https://fugw-edunext.fpt.edu.vn/api/auth/token", { ...options })
     let my = d.data;
     showIndicate(`Welcome ${my.name}`, "#35a661", 2);
     myId = my._id;
+    myEmail = my.email;
   });
