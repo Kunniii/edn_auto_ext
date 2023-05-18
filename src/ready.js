@@ -53,8 +53,6 @@ function addPaddingToBase64(base64String) {
 }
 
 let token = localStorage.getItem("token");
-let b64 = addPaddingToBase64(token.split(".")[1]);
-let myEmail = JSON.parse(atob(b64)).email;
 
 const API = "https://fugw-edunext.fpt.edu.vn:8443/api/v1";
 // const API = "https://fugw-edunext.fpt.edu.vn/api/v1";
@@ -84,4 +82,12 @@ const options = {
   },
 };
 
-showIndicate(`Welcome ${myEmail.split("@")[0]}`, "#35a661", 1);
+let myId;
+
+post("https://fugw-edunext.fpt.edu.vn/api/auth/token", { ...options })
+  .then((d) => d.json())
+  .then((d) => {
+    let my = d.data;
+    showIndicate(`Welcome ${my.name}`, "#35a661", 2);
+    myId = my._id;
+  });
