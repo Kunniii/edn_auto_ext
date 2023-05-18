@@ -1,5 +1,11 @@
 # New release 🎉 🎉
 
+Hotfix for V2.2.3
+
+I did not test the version before release.... fuk, now the chrome extension store will have to wait twice as long.
+
+---
+
 New update aims to ACTUALLY fix error when executing `atob()`.
 
 New function to vote comments.
