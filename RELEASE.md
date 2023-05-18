@@ -8,6 +8,7 @@ New function to vote comments.
 
 - Resolve #4: Fails when convert base64 to string.
 - New feature: Up vote for comments
+- Small change in coloring
 
 ## Todo
 

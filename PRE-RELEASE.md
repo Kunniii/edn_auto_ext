@@ -1,15 +1,16 @@
-# Pre Release - Use at your own risk 🎉 🎉
+# New release 🎉 🎉
 
-This release increase UX.
+New update aims to ACTUALLY fix error when executing `atob()`.
+
+New function to vote comments.
 
 ## Changes
 
-- When user open extension, a notification will show if the extension is ready to use
+- Resolve #4: Fails when convert base64 to string.
+- New feature: Up vote for comments
+- Small change in coloring
 
 ## Todo
 
-- [x] Notify if the extension loaded correctly.
-- [ ] Notify if there is any error when load extension.
-- [ ] Remember windows location after extension close.
-- [ ] Try to check if the API need PORT ?
+- [ ] Automation for publishing to Chrome Store.
 - [ ] Show alert telling user to send email if there is some critical error.
