@@ -1,0 +1,82 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="X-UA-Compatible"
+      content="IE=edge"
+    />
+    <title>EDN Auto V2</title>
+    <link
+      rel="stylesheet"
+      href="index.css"
+    />
+    <script
+      defer
+      src="index.js"
+    ></script>
+  </head>
+
+  <body class="bg-gray-800">
+    <div
+      id="new-version"
+      class="text-center text-md font-bold text-white px-2 bg-orange-700 hidden"
+    >
+      <a
+        class="underline"
+        href="https://github.com/Kunniii/edn_auto_ext/wiki/How-to-update-to-latest-version%3F"
+        target="_blank"
+        >How to update?</a
+      >
+    </div>
+    <div
+      id="latest-version"
+      class="text-center text-md font-bold text-white px-2 bg-green-600"
+    ></div>
+    <div
+      id="app"
+      class="w-96"
+    >
+      <img
+        src="icon.png"
+        class="mx-auto w-20 my-3"
+      />
+      <div
+        class="individual border-gray-300 border-2 rounded-lg mx-2 my-2 py-4 px-5 flex justify-between"
+      >
+        <h1 class="font-bold text-lg text-white">Teammates</h1>
+        <button
+          id="indie-button"
+          class="bg-yellow-500 hover:scale-110 duration-100 font-bold text-white text-lg w-fit rounded-lg px-10"
+        >
+          GRADE
+        </button>
+      </div>
+      <div
+        class="group border-gray-300 border-2 rounded-lg mx-2 my-2 py-4 px-5 flex justify-between"
+      >
+        <h1 class="font-bold text-lg text-white">Groups</h1>
+        <button
+          id="group-button"
+          class="bg-blue-600 hover:scale-110 duration-100 font-bold text-white text-lg w-fit rounded-lg px-10"
+        >
+          GRADE
+        </button>
+      </div>
+      <div
+        class="group border-gray-300 border-2 rounded-lg mx-2 my-2 py-4 px-5 flex justify-between"
+      >
+        <h1 class="font-bold text-lg text-white">Comments</h1>
+        <button
+          id="comments-button"
+          class="bg-emerald-500 hover:scale-110 duration-100 font-bold text-white text-lg w-fit rounded-lg px-10"
+        >
+          VOTE
+        </button>
+      </div>
+      <div
+        id="version"
+        class="text-center text-md font-bold text-white"
+      ></div>
+    </div>
+  </body>
+</html>

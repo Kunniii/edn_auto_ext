@@ -1,0 +1,36 @@
+{
+  "name": "EDN Auto V2",
+  "description": "EDN Auto V2",
+  "version": "2.2.2",
+  "manifest_version": 3,
+  "icons": {
+    "128": "icon.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*.fpt.edu.vn/course/activity/*"],
+      "js": ["contentScript.js"]
+    }
+  ],
+  "action": {
+    "default_icon": {
+      "128": "icon.png"
+    }
+  },
+  "permissions": ["storage", "scripting", "tabs"],
+  "host_permissions": ["https://*.fpt.edu.vn/course/activity/*"],
+  "web_accessible_resources": [
+    {
+      "resources": ["*"],
+      "matches": ["https://*.fpt.edu.vn/*"],
+      "use_dynamic_url": true
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' ; object-src 'self'",
+    "sandbox": "sandbox allow-scripts; script-src 'self' 'https://apis.google.com/' 'https://www.gstatic.com/' 'https://*.firebaseio.com'  'https://www.googleapis.com' 'https://ajax.googleapis.com'; object-src 'self'"
+  }
+}
