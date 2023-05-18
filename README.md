@@ -8,6 +8,8 @@
 
 This is an Browser Extension for Automate boring grading stars for users on EDN platform.
 
+You can find this extension on [Chrome Store](https://chrome.google.com/webstore/detail/edn-auto-v2/jcoanhnlcggnjkefelkngdpongoaipdk)
+
 ## What is this ?
 
 If you're a student or teacher looking for a reliable and efficient grading tool, look no further than our Edunext Auto Grading Tool.
