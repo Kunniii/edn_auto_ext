@@ -18,5 +18,5 @@ New function to vote comments.
 
 ## Todo
 
-- [ ] Automation for publishing to Chrome Store.
+- [x] Automation for publishing to Chrome Store.
 - [ ] Show alert telling user to send email if there is some critical error.

@@ -1,6 +1,6 @@
 {
   "name": "EDN Auto V2",
-  "description": "EDN Auto V2",
+  "description": "Automate grading tasks on edunext system ",
   "version": "2.2.4",
   "manifest_version": 3,
   "icons": {
