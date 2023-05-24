@@ -54,9 +54,8 @@ function grade_comments(stars = 4) {
           )
             .then((d) => d.json())
             .then((d) => {
-              let comments = d.data;
+              let comments = d.comments.items;
               for (let comment of comments) {
-                console.log(comment);
                 let commentId = comment._id;
                 let name = comment.writer.name;
                 if (myId == comment.writer._id) continue;
@@ -66,11 +65,11 @@ function grade_comments(stars = 4) {
                     typeStar: 1,
                     cqId: privateCqId,
                     commentId: commentId,
-                    star: 4,
+                    star: stars,
                   }),
                 }).then((d) => {
                   if (d.status == 200) {
-                    showIndicate(`Voted 4 ⭐ for ${name}`, "#059669", 2);
+                    showIndicate(`Voted ${stars} ⭐ for ${name}`, "#059669", 2);
                   } else {
                     showIndicate(`FAIL! ${name}`, "#E32E10", 2);
                   }
