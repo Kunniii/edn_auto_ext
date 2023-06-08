@@ -55,25 +55,35 @@ function grade_comments(stars = 4) {
             .then((d) => d.json())
             .then((d) => {
               let comments = d.comments.items;
+              let timeout = 500;
+              let availableRequestInTwoMin = 5;
               for (let comment of comments) {
                 let commentId = comment._id;
                 let name = comment.writer.name;
                 if (myId == comment.writer._id) continue;
-                post("https://fugw-edunext.fpt.edu.vn/api/comment/up-votes", {
-                  ...options,
-                  body: JSON.stringify({
-                    typeStar: 1,
-                    cqId: privateCqId,
-                    commentId: commentId,
-                    star: stars,
-                  }),
-                }).then((d) => {
-                  if (d.status == 200) {
-                    showIndicate(`Voted ${stars} ⭐ for ${name}`, "#059669", 2);
-                  } else {
-                    showIndicate(`FAIL! ${name}`, "#E32E10", 2);
-                  }
-                });
+                // showIndicate(`Pending ⭐ for ${name}`, "#7e22ce", 2);
+                setTimeout(() => {
+                  post("https://fugw-edunext.fpt.edu.vn/api/comment/up-votes", {
+                    ...options,
+                    body: JSON.stringify({
+                      typeStar: 1,
+                      cqId: privateCqId,
+                      commentId: commentId,
+                      star: stars,
+                    }),
+                  }).then((d) => {
+                    if (d.status == 200) {
+                      showIndicate(`Voted ${stars} ⭐ for ${name}`, "#059669", 2);
+                    } else {
+                      showIndicate(`FAIL! ${name}`, "#E32E10", 2);
+                    }
+                  });
+                }, timeout);
+                availableRequestInTwoMin--;
+                if (!availableRequestInTwoMin) {
+                  return;
+                }
+                // timeout += 2000;
               }
             });
         });

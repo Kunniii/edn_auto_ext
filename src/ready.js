@@ -75,7 +75,6 @@ function post(url, options, params) {
 
 const options = {
   headers: {
-    authority: "fugw-edunext.fpt.edu.vn",
     accept: "application/json, text/plain, */*",
     "content-type": "application/json",
     authorization: `Bearer ${token}`,

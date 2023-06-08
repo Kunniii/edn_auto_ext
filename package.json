@@ -19,5 +19,5 @@
     "@babel/core": "^7.21.8",
     "@babel/preset-env": "^7.21.5"
   },
-  "version": "2.2.5"
+  "version": "2.2.6"
 }

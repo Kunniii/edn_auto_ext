@@ -3,9 +3,10 @@ const clog = console.log;
 let ednTabId = 0;
 
 const last_window_info = {
+  lastLocation: {},
   location_default: {
     height: 400,
-    width: 385,
+    width: 337,
     top: 100,
     left: 100,
   },
@@ -68,7 +69,7 @@ async function launchExtension(tab) {
     return;
   } else {
     ednTabId = tab.id;
-    chrome.scripting.executeScript({
+    await chrome.scripting.executeScript({
       target: { tabId: tab.id },
       files: ["ready.js"],
     });
@@ -77,6 +78,7 @@ async function launchExtension(tab) {
     if (found) {
       extensionView.focus();
     } else {
+      console.log(location);
       chrome.windows.create(
         {
           url: chrome.runtime.getURL("index.html"),
@@ -84,8 +86,8 @@ async function launchExtension(tab) {
           focused: true,
           ...location,
         },
-        (w) => {
-          extensionView.window = w;
+        (window) => {
+          extensionView.window = window;
         }
       );
     }
@@ -97,7 +99,7 @@ chrome.windows.onBoundsChanged.addListener((window) => {
     if (extensionView.window.id === window.id) {
       let location = {
         height: 400,
-        width: 385,
+        width: 337,
         top: window.top,
         left: window.left,
       };
