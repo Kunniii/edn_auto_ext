@@ -1,23 +1,28 @@
 {
-  "name": "edn_auto_ext",
-  "description": "Edunext Automation Grading tools as Chrome Extension",
+  "name": "edn_auto_vue_ext",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev-tailwind": "tailwindcss -i ./src/index.css -o ./build/index.css --watch",
-    "dev-js": "babel src -d build -w -D --ignore '**/*.css'",
-    "build-tailwind": "tailwindcss -i ./src/index.css -o ./build/index.css --minify",
-    "build-js": "babel src -d build -D --minified --ignore '**/*.css'",
-    "build": "yarn build-js && yarn build-tailwind",
-    "update-version": "node update-version.js"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "tailwindcss": "^3.3.2",
-    "@babel/cli": "^7.21.5",
-    "@babel/core": "^7.21.8",
-    "@babel/preset-env": "^7.21.5"
+    "autoprefixer": "latest",
+    "axios": "^1.5.0",
+    "crypto-js": "^4.1.1",
+    "moment-timezone": "^0.5.43",
+    "pinia": "^2.1.6",
+    "postcss": "latest",
+    "tailwindcss": "latest",
+    "vue": "^3.3.4"
   },
-  "version": "2.2.6"
+  "devDependencies": {
+    "@types/chrome": "^0.0.246",
+    "@types/crypto-js": "^4.1.2",
+    "@types/node": "^20.6.3",
+    "@vitejs/plugin-vue": "^4.2.3",
+    "vite": "^4.4.5"
+  }
 }
