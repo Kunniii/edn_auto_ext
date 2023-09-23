@@ -27,13 +27,13 @@ jobs:
         run: yarn build
 
       - name: Rename build folder
-        run: mv build EDN_Auto_V2
+        run: mv build EDN_Auto_V3
 
       - name: Compress build
-        run: zip -r EDN_Auto_V2.zip EDN_Auto_V2
+        run: zip -r EDN_Auto_V3.zip EDN_Auto_V3
 
       - name: Generate MD5 Checksum
-        run: md5sum EDN_Auto_V2.zip > checksum.md5
+        run: md5sum EDN_Auto_V3.zip > checksum.md5
 
       - name: Release
         uses: softprops/action-gh-release@v1
@@ -41,6 +41,6 @@ jobs:
           name: "Pre-release ${{ github.ref_name }}"
           body_path: "PRE-RELEASE.md"
           files: |
-            EDN_Auto_V2.zip
+            EDN_Auto_V3.zip
             checksum.md5
           prerelease: true

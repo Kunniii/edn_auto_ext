@@ -27,15 +27,15 @@ jobs:
         run: yarn build
 
       - name: Rename build folder
-        run: mv build EDN_Auto_V2
+        run: mv build EDN_Auto_V3
 
       - name: Compress build
-        run: zip -r EDN_Auto_V2.zip EDN_Auto_V2
+        run: zip -r EDN_Auto_V3.zip EDN_Auto_V3
 
       - name: Generate MD5 Checksum
-        run: md5sum EDN_Auto_V2.zip > checksum.md5
+        run: md5sum EDN_Auto_V3.zip > checksum.md5
 
       - uses: ncipollo/release-action@v1
         with:
-          artifacts: "EDN_Auto_V2.zip,checksum.md5"
+          artifacts: "EDN_Auto_V3.zip,checksum.md5"
           bodyFile: "RELEASE.md"
