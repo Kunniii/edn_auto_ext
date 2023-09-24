@@ -1,10 +1,13 @@
-<a href="https://www.buymeacoffee.com/Kunniii" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
+# EDN Auto V2
 
-<a href='https://ko-fi.com/A0A0LD4D8' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/brandasset/kofi_button_red.png' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
+<div style="text-align: center">
+  <a href="https://www.buymeacoffee.com/Kunniii" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
+  
+  <a href='https://ko-fi.com/A0A0LD4D8' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/brandasset/kofi_button_red.png' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
+</div>
 
 ---
 
-# EDN Auto V2
 
 This is an Browser Extension for Automate boring grading stars for users on EDN platform.
 
@@ -37,3 +40,15 @@ Once the grading process is completed, you will see the notification on the top 
 ![grade_success.png](./docs/grade_success.png)
 
 Enjoy!
+
+## For developers
+
+Before the I create an account to publish this extension to Google Chrome Store, I used to use git brach to publish and release new update of this extension.
+
+Since Google Chrome Store will need time to review the new version of the extension, using git branch, you can have access to the new release whenever the CI/ID complete.
+
+There are two branches `nightly` and `stable`.
+
+When using git branch to access the extension, you first need to enable developer mode on Chrome/Edge, then `git clone` the project. 
+
+Depend on what version you want, just do `git switch <branch>`.
