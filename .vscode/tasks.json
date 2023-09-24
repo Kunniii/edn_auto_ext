@@ -1,0 +1,19 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "shell",
+      "command": "bun run build && ./copy_files.sh",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": [],
+      "label": "Build & Copy",
+      "detail": "bun run build && ./copy_files.sh",
+      "presentation": {
+        "close": true
+      }
+    }
+  ]
+}
