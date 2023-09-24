@@ -33,3 +33,5 @@ Then push the code.
 When the build is success, the branch `stable` will update with the new content.
 
 ## Publish to Chrome Store
+
+When releasing a statble build, it will automatically upload the new version to Chrome Store.
