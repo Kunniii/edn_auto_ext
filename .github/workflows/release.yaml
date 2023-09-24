@@ -14,28 +14,25 @@ jobs:
       - name: Check out
         uses: actions/checkout@v3
 
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: "18"
-          cache: "yarn"
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
 
       - name: Installing dependencies
-        run: yarn install --frozen-lockfile
+        run: bun install
 
       - name: Build for production
-        run: yarn build
+        run: bun run build
 
       - name: Rename build folder
-        run: mv build EDN_Auto_V2
+        run: mv build EDN_Auto_V3
 
       - name: Compress build
-        run: zip -r EDN_Auto_V2.zip EDN_Auto_V2
+        run: zip -r EDN_Auto_V3.zip EDN_Auto_V3
 
       - name: Generate MD5 Checksum
-        run: md5sum EDN_Auto_V2.zip > checksum.md5
+        run: md5sum EDN_Auto_V3.zip > checksum.md5
 
       - uses: ncipollo/release-action@v1
         with:
-          artifacts: "EDN_Auto_V2.zip,checksum.md5"
+          artifacts: "EDN_Auto_V3.zip,checksum.md5"
           bodyFile: "RELEASE.md"
