@@ -6,6 +6,7 @@ import { utils } from "./utils";
 const delay = 1500;
 
 let user: user;
+let appReady: true | false = false;
 let gradeTeammatesState: state = "static";
 let gradeGroupsState: state = "static";
 let gradeCommentsState: state = "disable";
@@ -14,6 +15,7 @@ export const useStore = defineStore("store", {
   state: () => ({
     TOKEN: "",
     currentURL: undefined,
+    appReady,
     user,
     gradeTeammatesState,
     gradeGroupsState,
@@ -33,6 +35,9 @@ export const useStore = defineStore("store", {
           this.gradeTeammatesState = "disable";
           this.gradeGroupsState = "disable";
           this.gradeCommentsState = "disable";
+          this.appReady = false;
+        } else {
+          this.appReady = true;
         }
       });
     },
