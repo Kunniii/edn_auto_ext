@@ -6,6 +6,7 @@
   "icons": {
     "128": "icon.png"
   },
+  "homepage_url": "https://github.com/Kunniii/edn_auto_ext",
   "background": {
     "service_worker": "Background.js",
     "type": "module"
@@ -13,17 +14,19 @@
   "content_scripts": [
     {
       "matches": ["https://fu-edunext.fpt.edu.vn/*"],
-      "js": ["ContentScript.js"]
+      "js": ["ContentScript.js"],
+      "run_at": "document_end"
     }
   ],
   "action": {
     "default_icon": {
       "128": "icon.png"
     },
-    "default_popup": "index.html"
+    "default_popup": "index.html",
+    "default_title": "Edunext Auto"
   },
-  "permissions": ["activeTab", "scripting"],
-  "host_permissions": ["https://*.fpt.edu.vn/course/activity/*"],
+  "permissions": ["https://fu-edunext.fpt.edu.vn/*", "activeTab", "scripting"],
+  "host_permissions": ["https://fu-edunext.fpt.edu.vn/*"],
   "commands": {
     "_execute_action": {
       "suggested_key": {
@@ -35,7 +38,7 @@
   "web_accessible_resources": [
     {
       "resources": ["*"],
-      "matches": ["https://*.fpt.edu.vn/*"],
+      "matches": ["https://fu-edunext.fpt.edu.vn/*"],
       "use_dynamic_url": true
     }
   ],
