@@ -12,7 +12,7 @@ const props = defineProps({
 });
 </script>
 <template>
-  <div class="bg-sky-50 dark:bg-slate-800 rounded-full my-4 mx-2 p-5 pl-8 flex justify-between">
+  <div class="bg-sky-50 dark:bg-slate-800 rounded-xl my-2 mx-2 p-5 pl-8 flex justify-between">
     <p class="text-lg select-none font-medium">
       <slot />
     </p>

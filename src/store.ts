@@ -6,7 +6,7 @@ import { utils } from "./utils";
 const delay = 1500;
 
 let user: user;
-let appReady: true | false = false;
+let appReady: true | false = true;
 let gradeTeammatesState: state = "static";
 let gradeGroupsState: state = "static";
 let gradeCommentsState: state = "static";
@@ -31,13 +31,13 @@ export const useStore = defineStore("store", {
       const msg: message = { command: "get_url" };
       chrome.runtime.sendMessage(msg, (response: response) => {
         this.currentURL = new URL(response.data);
+        if (this.currentURL.host !== "fu-edunext.fpt.edu.vn") {
+          this.appReady = false;
+        }
         if (this.currentURL.pathname !== "/course/activity/question") {
           this.gradeTeammatesState = "disable";
           this.gradeGroupsState = "disable";
           this.gradeCommentsState = "disable";
-          this.appReady = false;
-        } else {
-          this.appReady = true;
         }
       });
     },
@@ -77,6 +77,7 @@ export const useStore = defineStore("store", {
               for (let user of group.listStudentByGroups) {
                 if (user.email == this.user.email) {
                   groupId = group.id;
+                  this.user.groupId = group.id;
                   myGroup = group;
                   break;
                 }
@@ -103,9 +104,9 @@ export const useStore = defineStore("store", {
                 endpoints.gradeTeammates,
                 this.TOKEN,
                 undefined,
-                JSON.stringify({
+                {
                   gradeTeammatesList: gradeTeammatesList,
-                })
+                }
               );
               if (response.ok) {
                 this.gradeTeammatesState = "ok";
@@ -176,12 +177,7 @@ export const useStore = defineStore("store", {
               reviewingGroupDTO: null,
             };
 
-            let response = await utils.post(
-              endpoints.gradeGroups,
-              this.TOKEN,
-              undefined,
-              JSON.stringify(body)
-            );
+            let response = await utils.post(endpoints.gradeGroups, this.TOKEN, undefined, body);
 
             if (response.ok && this.gradeGroupsState !== "failed") {
               this.gradeGroupsState = "ok";
@@ -205,10 +201,79 @@ export const useStore = defineStore("store", {
       const classroomId = this.currentURL.searchParams.get("classId");
       const sessionId = this.currentURL.searchParams.get("sessionId");
 
-      let qcSettings: response = await utils.get(endpoints.qcSettings, this.TOKEN, {
+      // get settings for the QC
+      const qcSettings: response = await utils.get(endpoints.qcSettings, this.TOKEN, {
         privateCqId: privateCqId,
       });
       if (qcSettings.data.data) {
+        const settings = qcSettings.data.data;
+        const hashCode: string = settings.hashCode;
+        const classroomSessionId: string = settings.cqDetail.classroomSessionId;
+        let voteQueue: Number[] = [];
+        const typeStar = {
+          1: 4,
+          2: 3,
+          3: 2,
+          4: 1,
+        };
+        const insideSettings = settings.typeOfGrade.INSIDE;
+
+        for (let cardName in insideSettings) {
+          for (let quantity = 0; quantity < insideSettings[cardName].quantity; ++quantity) {
+            voteQueue.push(insideSettings[cardName].star);
+          }
+        }
+
+        // get votes that user gave
+        const allVoted: response = await utils.get(endpoints.getVoteGiven, this.TOKEN, {
+          privateCqId: privateCqId,
+          typeFilter: 1,
+        });
+        if (allVoted.data.data) {
+          const comments = allVoted.data.data;
+          for (let comment of comments) {
+            // unvote
+            await utils.post(endpoints.unVote, this.TOKEN, undefined, {
+              commentId: comment._id,
+              cqId: privateCqId,
+            });
+          }
+
+          // get all comments
+          const allComments: response = await utils.get(endpoints.getComments, this.TOKEN, {
+            cqId: privateCqId,
+            role: this.user.role,
+            userId: this.user.userId,
+            classroomSessionId: classroomSessionId,
+            groupId: this.user.groupId,
+            outsideGroup: false,
+            minItemId: "empty",
+            maxItemId: "empty",
+            beforePage: 1,
+            currentPage: 1,
+            statusClickAll: false,
+            pageSize: 999,
+            hashCode: hashCode,
+          });
+
+          if (allComments.data.comments) {
+            let comments = allComments.data.comments.items;
+            for (let comment of comments) {
+              if (comment.writer._id === this.user.id) continue;
+              if (voteQueue.length > 0) {
+                const star = voteQueue.shift() || "";
+                await utils.post(endpoints.upVote, this.TOKEN, undefined, {
+                  commentId: comment._id,
+                  cqId: privateCqId,
+                  star: star,
+                  typeStar: typeStar[+star],
+                  typeFilter: 1,
+                });
+              }
+            }
+          }
+          this.gradeCommentsState = "ok";
+        }
       }
     },
   },

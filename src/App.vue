@@ -30,7 +30,7 @@ window.addEventListener("keydown", handleShortCut);
       src="/icon.png"
       class="mx-auto w-20 drop-shadow-lg animate-wiggle"
     />
-    <h1 class="text-center text-base pt-4 dark:text-white font-bold">{{ store.user?.name }}</h1>
+    <h1 class="text-center text-base pt-2 font-bold">{{ store.user?.name }}</h1>
     <div>
       <Card
         :on-btn-click="store.gradeTeammates"

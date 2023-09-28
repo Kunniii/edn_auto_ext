@@ -73,7 +73,7 @@ export const utils = {
     endpoint: string,
     token: string,
     params: Object | undefined = undefined,
-    body: string | undefined = undefined
+    body: Object | undefined = undefined
   ) {
     const message: message = {
       command: "make_request",
@@ -82,7 +82,7 @@ export const utils = {
         configs: {
           method: "POST",
           headers: utils.getRequestHeaders(endpoint, token),
-          body: body,
+          body: JSON.stringify(body),
         },
         params: params,
       },
