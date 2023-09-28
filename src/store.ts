@@ -9,7 +9,7 @@ let user: user;
 let appReady: true | false = false;
 let gradeTeammatesState: state = "static";
 let gradeGroupsState: state = "static";
-let gradeCommentsState: state = "disable";
+let gradeCommentsState: state = "static";
 
 export const useStore = defineStore("store", {
   state: () => ({
@@ -208,6 +208,8 @@ export const useStore = defineStore("store", {
       let qcSettings: response = await utils.get(endpoints.qcSettings, this.TOKEN, {
         privateCqId: privateCqId,
       });
+      if (qcSettings.data.data) {
+      }
     },
   },
 });

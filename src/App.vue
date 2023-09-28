@@ -28,7 +28,7 @@ window.addEventListener("keydown", handleShortCut);
   >
     <img
       src="/icon.png"
-      class="mx-auto w-20 drop-shadow-lg"
+      class="mx-auto w-20 drop-shadow-lg animate-wiggle"
     />
     <h1 class="text-center text-base pt-4 dark:text-white font-bold">{{ store.user?.name }}</h1>
     <div>
