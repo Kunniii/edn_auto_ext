@@ -201,6 +201,27 @@ export const useStore = defineStore("store", {
       const classroomId = this.currentURL.searchParams.get("classId");
       const sessionId = this.currentURL.searchParams.get("sessionId");
 
+      const classroomSessionId = this.currentURL.searchParams.get("classroomSessionId");
+
+      let groups: response = await utils.post(endpoints.listGroups, this.TOKEN, {
+        classroomSessionId: classroomSessionId,
+      });
+      if (groups.ok) {
+        this.user.groupId = undefined;
+        for (let group of groups.data) {
+          let groupId = group.id;
+          for (let user of group.listStudentByGroups) {
+            if (user.id == this.user.userId) {
+              this.user.groupId = groupId;
+              break;
+            }
+          }
+          if (this.user.groupId) {
+            break;
+          }
+        }
+      }
+
       // get settings for the QC
       const qcSettings: response = await utils.get(endpoints.qcSettings, this.TOKEN, {
         privateCqId: privateCqId,
@@ -252,17 +273,21 @@ export const useStore = defineStore("store", {
             beforePage: 1,
             currentPage: 1,
             statusClickAll: false,
-            pageSize: 999,
+            pageSize: 10,
             hashCode: hashCode,
           });
 
           if (allComments.data.comments) {
             let comments = allComments.data.comments.items;
             for (let comment of comments) {
-              if (comment.writer._id === this.user.id) continue;
-              if (voteQueue.length > 0) {
+              if (
+                comment.writer.userId === this.user.userId ||
+                comment.groupId != this.user.groupId
+              ) {
+                continue;
+              } else if (voteQueue.length > 0) {
                 const star = voteQueue.shift() || "";
-                await utils.post(endpoints.upVote, this.TOKEN, undefined, {
+                let res: response = await utils.post(endpoints.upVote, this.TOKEN, undefined, {
                   commentId: comment._id,
                   cqId: privateCqId,
                   star: star,

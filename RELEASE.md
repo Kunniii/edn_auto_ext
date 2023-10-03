@@ -1,30 +1,14 @@
 # New release 🎉 🎉
 
-Pre-release version 3.0
+Release version 3.1.2
 
----
+Bug fix for 3.1.1
 
-This is the big update, switching to Vue for frontend. And works with EDN new API!
+## Fixes ✨✨
 
-## Features ✨✨
-
-1. Shortcuts
-    
-    To access the extension from Chrome/Edge use `Ctrl +B`
-
-    In the main menu, you can either press `1`, `2`, or `3` to trigger `Teammates`, `Groups`, and `Comments` grading respectively.
-
-2. Interactive UX/UI
-
-    The extension will show if the action is completed successfully by showing the colorful feedback.
-
-## Changes
-
-- New UI
-- Using Vue as frontend
-- Fully implement Contentscript and Service worker for this extension.
-- Added shortcut to access this extension
+- Fixed when Voting comments
 
 ## Todo
 
-- [ ] Complete `Comment Grading` function.
+- [x] Complete `Comment Grading` function.
+- [ ] Queue the voting process
